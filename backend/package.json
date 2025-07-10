@@ -4,7 +4,8 @@
     "dev": "bun run --hot src/index.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "bun run ./src/utils/migrate.ts",
-    "db:studio": "bunx drizzle-kit studio"
+    "db:studio": "bunx drizzle-kit studio",
+    "start":"bun run src/index.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.44.2",
