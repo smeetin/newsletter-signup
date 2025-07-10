@@ -7,7 +7,8 @@ const app = new Hono();
 app.get("/", (c) => {
   const info = getConnInfo(c);
   const ip = info.remote.address || "unkown";
-  return c.text(`ip: ${ip}: ${JSON.stringify(info)}`);
+  const headerIP = c.req.header("X-Forwarded-For");
+  return c.text(`ip: ${ip}: ${JSON.stringify(info)}, headerIP: ${headerIP}`);
 });
 
 export default app;
