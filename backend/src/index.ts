@@ -1,9 +1,13 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
 
-const app = new Hono()
+import { getConnInfo } from "hono/bun";
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const app = new Hono();
 
-export default app
+app.get("/", (c) => {
+  const info = getConnInfo(c);
+  const ip = info.remote.address || "unkown";
+  return c.text(`ip: ${ip}: ${JSON.stringify(info)}`);
+});
+
+export default app;
